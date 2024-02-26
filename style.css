@@ -1,0 +1,72 @@
+body{
+    background-color: rgb(235, 220, 245);
+}
+header{
+    width:auto;
+    display: flex;
+    background-color: rgb(226, 174, 239);
+    color: rgb(86, 54, 87);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    height: 70px;
+    justify-content: center;
+    border-radius: 20px;
+    padding-bottom: 5px;
+}
+main{
+    display: flex;
+}
+.search-section{
+    display: flex;
+    flex-direction: column;
+}
+aside{
+    float: left;
+}
+
+#location{
+    margin: 10px;
+    width: 350px;
+    height: 30px;
+    
+}
+#search{
+    margin: 10px;
+    font-size: large;
+    width: 90px;
+    border-radius: 5px;
+}
+section{
+    flex: 1 1 0;
+    float: right;
+    
+}
+#weather{
+    background-color: rgb(234, 208, 241);
+   height: 180px;
+   margin: 20px;
+   padding: 15px;
+  
+
+    }
+    .weather-location{
+        padding: 10px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 15px;
+    }
+   span{
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+   }
+   .forecast-days{
+    display: table;
+   
+    
+   }
+   .forecast-day{
+    float: left;
+    background-color: #f1f1f1;
+  width: 150px;
+  height: 200px;
+  margin: 10px;
+   }
