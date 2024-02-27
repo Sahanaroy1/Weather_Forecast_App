@@ -11,11 +11,17 @@ var tempValueEl = document.getElementById('temp-value')
 
 
 window.onload = onLoadOfCity();
+
 document.getElementById("weather").style.display = "none";
 document.getElementById("forecast").style.display = "none";
+
 function onClickSearch(){
   document.getElementById("weather").style.display = "block";
   document.getElementById("forecast").style.display = "block";
+
+  
+//console.log(today.format(" D MMMM, YYYY,"));
+
   
     console.log('search button clicked');
 
@@ -48,7 +54,7 @@ function getApi(lookUpUrl, locationName) {
     var longitude = data[0].lon;
    
 
-    var lookUpWeather = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitutde + '&lon=' + longitude + '&appid=f23ee9deb4e1a7450f3157c44ed020e1'
+    var lookUpWeather = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitutde + '&lon=' + longitude + '&units=imperial&exclude=hourly,daily&appid=f23ee9deb4e1a7450f3157c44ed020e1'
     console.log(lookUpWeather);
 
     fetch(lookUpWeather)
@@ -67,21 +73,31 @@ function getApi(lookUpUrl, locationName) {
   }
   
   function display(data){
-        document.getElementById("location-name").textContent = `${data.city.name}`;
+
+    var today = dayjs();
+    
+        //document.getElementById("location-name").textContent = `${data.city}`;
+        document.getElementById("location-name").textContent = 
+        `${data.city.name} (${today.format("DD-MM-YYYY")})`;
+       
         //document.getElementById("weatherImg").textContent = `${data.list[0].weather[0].icon}`
         document.getElementById("temp-value").textContent = `${data.list[0].main.temp}  \u00B0F`;
         document.getElementById("wind-value").textContent = `${data.list[0].wind.speed} MPH`;
         document.getElementById("humidity-value").textContent = `${data.list[0].main.humidity} %`;
 
-      for(var i = 0; i < 5; i++){
+      for(var i = 0; i < 40; i++){
+        i = i + 6;
         console.log('dailyForecast');
         const dailyForecast = data[i];
         
 
         const listItem = document.createElement('li');
         listItem.classList.add('forecastItem');
+
+        
+       
         listItem.innerHTML = `
-        <div class="forecast-date"> ( ${data.list[i].dt_txt} ) </div>
+        <div class="forecast-date">  ${data.list[i].dt_txt}  </div>
         <div class="forecast-temp">Temp - ${data.list[i].main.temp} &#8457 </div>
         <div class="forecast-wind">Wind - ${data.list[i].wind.speed} MPH</div>
         <div class="forecast-humidity">Humidity - ${data.list[i].main.humidity} %</div>`;
@@ -109,6 +125,8 @@ function getApi(lookUpUrl, locationName) {
 
     //localStorage.get(citySelected);
     console.log(localStorage.getItem(citySelected));
+
+    
 
     display(localStorage.getItem(citySelected));
   }
