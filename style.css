@@ -24,15 +24,20 @@ aside{
 }
 
 #location{
-    margin: 10px;
-    width: 350px;
+    
+    margin-left: 20px;
+    width: 340px;
     height: 30px;
+    border-radius: 5px;
+    border: 1px solid #322132;
     
 }
+
 #search{
     margin: 10px;
+    margin-left: 20px;
     font-size: large;
-    width: 90px;
+    width:350px;
     border-radius: 5px;
 }
 section{
@@ -50,23 +55,96 @@ section{
     }
     .weather-location{
         padding: 10px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: 15px;
+        font-size: 25px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+       margin-left: 5px;
+        color: #322132;
     }
    span{
     padding: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 15px;
    }
-   .forecast-days{
-    display: table;
+
    
+   .forecastItem{
+    display: table;
+
     
    }
-   .forecast-day{
+   #search{
+    background-color: rgb(146, 121, 143);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+   }
+   h2{
+    margin-left: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #341d34;
+   }
+   hr{
+    width:350px;
+    border:#341d34 1px outset;
+    margin-left: 20px;
+   }
+   #recentLocations{
+    margin-left: 10px;
+   }
+   button {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    
+    justify-content: center;
+    height: 40px;
+    width: 350px;
+    font-size: 15px;
+    background-color: #c7afc7;
+    border-radius: 5px;
+    border: #322132;
+    margin-left: 10px;
+   }
+   .temperature{
+    padding: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #322132;
+    font-size: 15px;
+   }
+   .wind{
+    padding: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #322132;
+   }
+   .humidity{
+    padding: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #322132;
+   }
+   .forecast-temp{
+    padding: 5px;
+   }
+   .forecast-wind{
+    padding: 5px;
+   }
+   .forecast-humidity{
+    padding: 5px;
+   }
+   li{
+    
     float: left;
-    background-color: #f1f1f1;
-  width: 150px;
-  height: 200px;
+    padding: 10px;
+    background-color: #c7afc7;
+  width: 160px;
+  height: 220px;
   margin: 10px;
+  border-radius: 10px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  
+   }
+   .forecastName{
+    font-weight: 100;
+    color: #322132;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
    }

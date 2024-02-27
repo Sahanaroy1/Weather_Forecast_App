@@ -14,19 +14,24 @@
     <main>
         <aside>
             <div class="search-section">
-                <input type="text" id="location" placeholder="Enter a location">
+                <h2>Enter a City Name</h2>
+                <input type="text" id="location" placeholder=" Eg.London, HongKong, Shanghai" >
                 <button id="search">Search</button>
+                <hr>
                 <div id="error"></div>
             </div>
            
-            <div class="recent-section" id="recent-locations">
+            <div class="recent-section" id="recentLocations">
 
             </div>
         </aside>
         <section>
             <div id="weather">
                 <div class="weather-icon">
-                    <div class="weather-location" id="location-name">Enter a location</div>
+                    <div class="weather-location" id="location-name">
+                        <div id="currentDate"></div>
+                    </div>
+                    <div id="weatherImg"></div>
                     <!--<img src="assets/images" alt="">-->
                 </div>
                 <div class="weather-info">
@@ -42,132 +47,12 @@
                         <span>Humidity:</span>
                         <span id="humidity-value">-</span>
                     </div>
-                    <div class="uv-index">
-                        <span>UV-Index:</span>
-                        <span id="uni-value">-</span>
-                    </div>
                 </div>
             </div>
             <div id="forecast">
-                <h2>5-Days Forecast</h2>
-                <div id="forecast-days">
-                    <div class="forecast-day">
-                        <div class="forecast-date">Date</div>
-                        <div class="forecast-icon">
-                            <!--<img src="assets/images/cloudy.png">-->
-                        </div>
-                        <div class="forecast-temp">
-                            <span>Temp:</span>
-                            <span>0</span>
-                        </div>
-                        <div class="forecast-wind">
-                            <span>Wind:</span>
-                            <span>0</span>
-                        </div>
-                        <div class="forecast-humid">
-                            <span>Humidity:</span>
-                            <span>0</span>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div id="forecast-days">
-                    <div class="forecast-day">
-                        <div class="forecast-date">Date</div>
-                        <div class="forecast-icon">
-                            <!--<img src="assets/images/cloudy.png">-->
-                        </div>
-                        <div class="forecast-temp">
-                            <span>Temp:</span>
-                            <span>0</span>
-                        </div>
-                        <div class="forecast-wind">
-                            <span>Wind:</span>
-                            <span>0</span>
-                        </div>
-                        <div class="forecast-humid">
-                            <span>Humidity:</span>
-                            <span>0</span>
-                        </div>
-                        
-                    </div>
-                    <div class="forecast-day">
-                        <div class="forecast-date">Date</div>
-                        <div class="forecast-icon">
-                            <!--<img src="assets/images/cloudy.png">-->
-                        </div>
-                        <div class="forecast-temp">
-                            <span>Temp:</span>
-                            <span>0</span>
-                        </div>
-                        <div class="forecast-wind">
-                            <span>Wind:</span>
-                            <span>0</span>
-                        </div>
-                        <div class="forecast-humid">
-                            <span>Humidity:</span>
-                            <span>0</span>
-                        </div>
-                        
-                    </div>
-                    <div class="forecast-day">
-                        <div class="forecast-date">Date</div>
-                        <div class="forecast-icon">
-                            <!--<img src="assets/images/cloudy.png">-->
-                        </div>
-                        <div class="forecast-temp">
-                            <span>Temp:</span>
-                            <span>0</span>
-                        </div>
-                        <div class="forecast-wind">
-                            <span>Wind:</span>
-                            <span>0</span>
-                        </div>
-                        <div class="forecast-humid">
-                            <span>Humidity:</span>
-                            <span>0</span>
-                        </div>
-                        
-                    </div>
-                    <div class="forecast-day">
-                        <div class="forecast-date">Date</div>
-                        <div class="forecast-icon">
-                            <!--<img src="assets/images/cloudy.png">-->
-                        </div>
-                        <div class="forecast-temp">
-                            <span>Temp:</span>
-                            <span>0</span>
-                        </div>
-                        <div class="forecast-wind">
-                            <span>Wind:</span>
-                            <span>0</span>
-                        </div>
-                        <div class="forecast-humid">
-                            <span>Humidity:</span>
-                            <span>0</span>
-                        </div>
-                        
-                    </div>
-                    <div class="forecast-day">
-                        <div class="forecast-date">Date</div>
-                        <div class="forecast-icon">
-                            <!--<img src="assets/images/cloudy.png">-->
-                        </div>
-                        <div class="forecast-temp">
-                            <span>Temp:</span>
-                            <span>0</span>
-                        </div>
-                        <div class="forecast-wind">
-                            <span>Wind:</span>
-                            <span>0</span>
-                        </div>
-                        <div class="forecast-humid">
-                            <span>Humidity:</span>
-                            <span>0</span>
-                        </div>
-                        
-                    </div>
-                    
+                <h2 >5-Days Forecast</h2>
+                <div id="forecastItem">
+                   
                 </div>
             </div>
         </section>
