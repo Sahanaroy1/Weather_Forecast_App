@@ -18,3 +18,4 @@
 https://sahanaroy1.github.io/Weather_Forecast_App/
 
 # Snippet of the Weather Forecast Application:
+<img width="1438" alt="Weather Dashboard" src="https://github.com/Sahanaroy1/Weather_Forecast_App/assets/127791384/fb1479e1-394b-45b2-975a-9fc9bb02bf95">
