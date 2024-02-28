@@ -1,6 +1,11 @@
-const WEATHER_API_BASE_URL = "https://api.openweathermap.org";
+const WEATHER_COORDINATES_URL =
+  "https://api.openweathermap.org/geo/1.0/direct?q=";
+const WEATHER_URL_ADDTIONAL_DATA = "&limit=5&appid=";
 const WEATHER_API_KEY = "f23ee9deb4e1a7450f3157c44ed020e1";
 const MAX_DAILY_FORECAST = 5;
+const FORECAST_COORDINATES_URL =
+  "https://api.openweathermap.org/data/2.5/forecast?lat=";
+const IMAGE_URL = "https://openweathermap.org/img/wn/";
 
 var locationEl = document.getElementById("location");
 var searchEl = document.getElementById("search");
@@ -12,6 +17,7 @@ window.onload = onLoadOfCity();
 document.getElementById("weather").style.display = "none";
 document.getElementById("forecast").style.display = "none";
 
+//To make the API call on the given location.
 function onClickSearch() {
   document.getElementById("weather").style.display = "block";
   document.getElementById("forecast").style.display = "block";
@@ -20,23 +26,26 @@ function onClickSearch() {
   if (locationName) {
     lookupLocation(locationName);
   } else {
-    console.log("no location name");
+    document.getElementById("weather").style.display = "none";
+    document.getElementById("forecast").style.display = "none";
+    alert("Please enter a city Name");
   }
 }
 
+//To find out co-ordinates for user entered city.
 function lookupLocation(locationName) {
-  var lookUpUrl =
-    "https://api.openweathermap.org/geo/1.0/direct?q=" +
+  var coordinatelookUpUrl =
+    WEATHER_COORDINATES_URL +
     locationName +
-    "&limit=5&appid=f23ee9deb4e1a7450f3157c44ed020e1";
+    WEATHER_URL_ADDTIONAL_DATA +
+    WEATHER_API_KEY;
   console.log("lookuplocation");
-  var latLon = retriveWeatherDetailsByCoordinates(lookUpUrl, locationName);
-
-  console.log(latLon);
+  retriveWeatherDetailsByCoordinates(coordinatelookUpUrl, locationName);
 }
 
-function retriveWeatherDetailsByCoordinates(lookUpUrl, locationName) {
-  fetch(lookUpUrl)
+//To get the weather details based on the co-ordinates.
+function retriveWeatherDetailsByCoordinates(coordinatelookUpUrl, locationName) {
+  fetch(coordinatelookUpUrl)
     .then(function (response) {
       return response.json();
     })
@@ -45,11 +54,12 @@ function retriveWeatherDetailsByCoordinates(lookUpUrl, locationName) {
       var longitude = data[0].lon;
 
       var lookUpWeather =
-        "https://api.openweathermap.org/data/2.5/forecast?lat=" +
+        FORECAST_COORDINATES_URL +
         latitutde +
         "&lon=" +
         longitude +
-        "&units=imperial&exclude=hourly,daily&appid=f23ee9deb4e1a7450f3157c44ed020e1";
+        "&units=imperial&exclude=hourly,daily&appid=" +
+        WEATHER_API_KEY;
       console.log(lookUpWeather);
 
       fetch(lookUpWeather)
@@ -63,12 +73,11 @@ function retriveWeatherDetailsByCoordinates(lookUpUrl, locationName) {
 
           display(jsonData);
           onLoadOfCity();
-
-          return data;
         });
     });
 }
 
+//Object is made to create the HTML element dynamically.
 function creatingDataObject(data) {
   var today = dayjs();
 
@@ -78,33 +87,26 @@ function creatingDataObject(data) {
     temperature: data.list[0].main.temp,
     wind: data.list[0].wind.speed,
     humidity: data.list[0].main.humidity,
-    image:
-      "https://openweathermap.org/img/wn/" +
-      data.list[0].weather[0].icon +
-      ".png",
+    image: IMAGE_URL + data.list[0].weather[0].icon + ".png",
 
     forecast: [],
   };
 
-  for (var i = 0; i < 40; i = i + 8) {
+  for (var i = 0; i < data.list.length; i = i + 8) {
     var weatherForecast = {
       date: dayjs(data.list[i].dt_txt).format("DD-MM-YYYY"),
       temperature: data.list[i].main.temp,
       wind: data.list[i].wind.speed,
       humidity: data.list[i].main.humidity,
-      image:
-        "https://openweathermap.org/img/wn/" +
-        data.list[i].weather[0].icon +
-        ".png",
+      image: IMAGE_URL + data.list[i].weather[0].icon + ".png",
     };
     weather.forecast.push(weatherForecast);
   }
   return weather;
 }
 
+//To display the received data with the help of API.
 function display(data) {
-  console.log(data.image);
-
   document.getElementById(
     "location-name"
   ).textContent = `${data.city} (${data.date})`;
@@ -131,6 +133,7 @@ function display(data) {
   }
 }
 
+//To show the cities already searched in a div element.
 function onLoadOfCity() {
   document.getElementById("recentLocations").innerHTML = " ";
 
@@ -143,6 +146,7 @@ function onLoadOfCity() {
   }
 }
 
+//To show the details of any listed city details.
 function cityDetails(e) {
   document.getElementById("weather").style.display = "block";
   document.getElementById("forecast").style.display = "block";
