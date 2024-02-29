@@ -1,13 +1,16 @@
-
+:root{
+    --font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    --dark: #322132;
+}
 body{
-     background-color: rgb(235, 220, 245);
+    background-color: rgb(235, 220, 245);
 }
 header{
     width:auto;
     display: flex;
     background-color: rgb(226, 174, 239);
     color: rgb(86, 54, 87);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: var(--font-family);
     height: 70px;
     justify-content: center;
     border-radius: 20px;
@@ -28,7 +31,7 @@ aside{
     width: 340px;
     height: 30px;
     border-radius: 5px;
-    border: 1px solid #322132;   
+    border: 1px solid var(--dark);   
 }
 #search{
     margin: 10px;
@@ -43,23 +46,23 @@ section{
 }
 #weather{
     background-color: rgb(234, 208, 241);
-   height: 180px;
-   margin: 20px;
-   padding: 15px;
+    height: 180px;
+    margin: 20px;
+    padding: 15px;
 }
 .weather-location{
     padding: 10px;
     font-size: 25px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: var(--font-family);
     font-weight: bold;
     margin-left: 5px;
-    color: #322132;
+    color: var(--dark);
 }
-   span{
+span{
     padding: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 15px;
-   }
+}
 #imgWeather{
     float: right;
     margin-right:100px;
@@ -70,12 +73,12 @@ section{
 }
  #search{
     background-color: rgb(146, 121, 143);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: var(--font-family);
     font-size: 20px;
 }
 h2{
     margin-left: 20px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: var(--font-family);
     color: #341d34;
 }
 hr{
@@ -97,24 +100,24 @@ button {
     font-size: 15px;
     background-color: #c7afc7;
     border-radius: 5px;
-    border: #322132;
+    border: var(--dark);
     margin-left: 10px;
 }
 .temperature{
     padding: 5px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: #322132;
+    font-family: var(--font-family);
+    color: var(--dark);
     font-size: 15px;
 }
 .wind{
     padding: 5px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: #322132;
+    font-family: var(--font-family);
+    color: var(--dark);
 }
 .humidity{
     padding: 5px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: #322132;
+    font-family: var(--font-family);
+    color: var(--dark);
 }
 .forecast-temp{
     padding: 5px;
@@ -133,10 +136,10 @@ li{
     height: 220px;
     margin: 10px;
     border-radius: 10px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: var(--font-family);
 }
 .forecastName{
     font-weight: 100;
-    color: #322132;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: var(--dark);
+    font-family: var(--font-family);
 }

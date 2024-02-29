@@ -9,9 +9,9 @@
 
 ## Acceptance Criteria
 
-* It's done with window onload the form input comes to enter the city name.
-* It's done when search is clicked the current day weather comes with city name, date, temperature, wind speed, humidity, and weather icon displaying the image.
-* It's done when along with current date upcoming 5-days forecast is also displayed with date, weather sicon, temperature, wind speed and humidity.
+* It's done when, on window onload input form is presented to enter the city name.
+* It's done when search is clicked the current day weather displayed with city name, date, temperature, wind speed, humidity, and weather icon.
+* It's done when along with current date 5-days forecast is also displayed with date, weather icon, temperature, wind speed and humidity.
 * It's done when displayed city with current and future weather condition is stored in local storage and displayed when the city name from the displayed list is clicked.
 
 * Deployed Link:

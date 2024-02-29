@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Forecast</title>
+    <title>Weather & Rader 🌤</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,39 +18,33 @@
                 <input type="text" id="location" placeholder="  Eg. London, HongKong, Shanghai">
                 <button id="search">Search</button>
                 <hr>
-                <div id="error"></div>
             </div>
             <div class="recent-section" id="recentLocations">
             </div>
         </aside>
         <section>
             <div id="weather">
-                <div class="weather-icon">
-                    <div class="weather-location" id="location-name">
-                    </div>
-                    <div id="weatherImg">
-                        <img id="imgWeather" alt="Weather">
-                    </div>
+                <div class="weather-location" id="location-name">
                 </div>
-                <div class="weather-info">
-                    <div class="temperature">
-                        <span>Temperature:</span>
-                        <span id="temp-value">-</span>
-                    </div>
-                    <div class="wind">
-                        <span>Wind:</span>
-                        <span id="wind-value">-</span>
-                    </div>
-                    <div class="humidity">
-                        <span>Humidity:</span>
-                        <span id="humidity-value">-</span>
-                    </div>
+                <div id="weatherImg">
+                    <img id="imgWeather" alt="Weather">
+                </div>
+                <div class="temperature">
+                    <span>Temperature:</span>
+                    <span id="temp-value">-</span>
+                </div>
+                <div class="wind">
+                    <span>Wind:</span>
+                    <span id="wind-value">-</span>
+                </div>
+                <div class="humidity">
+                    <span>Humidity:</span>
+                    <span id="humidity-value">-</span>
                 </div>
             </div>
             <div id="forecast">
                 <h2>5-Days Forecast</h2>
                 <div id="forecastItem">
-
                 </div>
             </div>
         </section>
@@ -60,4 +54,5 @@
         integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

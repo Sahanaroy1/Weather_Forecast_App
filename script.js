@@ -12,19 +12,19 @@ var searchEl = document.getElementById("search");
 var recentLocationsEl = document.getElementById("recentLocations");
 var tempValueEl = document.getElementById("temp-value");
 
-window.onload = onLoadOfCity();
+window.onload = loadPreviouslySearchedCities();
 
 document.getElementById("weather").style.display = "none";
 document.getElementById("forecast").style.display = "none";
 
-//To make the API call on the given location.
-function onClickSearch() {
+//To make the API call on the given location and handle display elements.
+function weatherSearchByCityName() {
   document.getElementById("weather").style.display = "block";
   document.getElementById("forecast").style.display = "block";
 
   var locationName = locationEl.value;
   if (locationName) {
-    lookupLocation(locationName);
+    fetchCoordinatesByCityName(locationName);
   } else {
     document.getElementById("weather").style.display = "none";
     document.getElementById("forecast").style.display = "none";
@@ -32,52 +32,51 @@ function onClickSearch() {
   }
 }
 
-//To find out co-ordinates for user entered city.
-function lookupLocation(locationName) {
+//To find out co-ordinates of city for user entered city.
+function fetchCoordinatesByCityName(locationName) {
   var coordinatelookUpUrl =
     WEATHER_COORDINATES_URL +
     locationName +
     WEATHER_URL_ADDTIONAL_DATA +
     WEATHER_API_KEY;
-  console.log("lookuplocation");
-  retriveWeatherDetailsByCoordinates(coordinatelookUpUrl, locationName);
-}
 
-//To get the weather details based on the co-ordinates.
-function retriveWeatherDetailsByCoordinates(coordinatelookUpUrl, locationName) {
   fetch(coordinatelookUpUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      var latitutde = data[0].lat;
+      var latitude = data[0].lat;
       var longitude = data[0].lon;
 
-      var lookUpWeather =
-        FORECAST_COORDINATES_URL +
-        latitutde +
-        "&lon=" +
-        longitude +
-        "&units=imperial&exclude=hourly,daily&appid=" +
-        WEATHER_API_KEY;
-      console.log(lookUpWeather);
-
-      fetch(lookUpWeather)
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (data) {
-          var jsonData = creatingDataObject(data);
-
-          localStorage.setItem(data.city.name, JSON.stringify(jsonData));
-
-          display(jsonData);
-          onLoadOfCity();
-        });
+      retriveWeatherDetailsByCoordinates(latitude, longitude);
     });
 }
 
-//Object is made to create the HTML element dynamically.
+//To get the weather details based on the co-ordinates.
+function retriveWeatherDetailsByCoordinates(latitude, longitude) {
+  var lookUpWeather =
+    FORECAST_COORDINATES_URL +
+    latitude +
+    "&lon=" +
+    longitude +
+    "&units=imperial&exclude=hourly,daily&lang=en&appid=" +
+    WEATHER_API_KEY;
+
+  fetch(lookUpWeather)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      var jsonData = creatingDataObject(data);
+
+      localStorage.setItem(data.city.name, JSON.stringify(jsonData));
+
+      display(jsonData);
+      loadPreviouslySearchedCities();
+    });
+}
+
+//API response is converted into an object
 function creatingDataObject(data) {
   var today = dayjs();
 
@@ -91,7 +90,7 @@ function creatingDataObject(data) {
 
     forecast: [],
   };
-
+  //for looped is hoped by 8 as the data is provided on 3 hourly basis
   for (var i = 0; i < data.list.length; i = i + 8) {
     var weatherForecast = {
       date: dayjs(data.list[i].dt_txt).format("DD-MM-YYYY"),
@@ -105,7 +104,7 @@ function creatingDataObject(data) {
   return weather;
 }
 
-//To display the received data with the help of API.
+//HTML elements are dynamically created and managed
 function display(data) {
   document.getElementById(
     "location-name"
@@ -133,11 +132,16 @@ function display(data) {
   }
 }
 
-//To show the cities already searched in a div element.
-function onLoadOfCity() {
+//To show the previouly searched cities in li element.
+function loadPreviouslySearchedCities() {
   document.getElementById("recentLocations").innerHTML = " ";
+  var cityListLength = 10;
 
-  for (var i = 0; i < localStorage.length; i++) {
+  if (localStorage.length < 10) {
+    cityListLength = localStorage.length;
+  }
+
+  for (var i = 0; i < cityListLength; i++) {
     const li = document.createElement("button");
     var cityName = localStorage.key(i);
 
@@ -146,17 +150,17 @@ function onLoadOfCity() {
   }
 }
 
-//To show the details of any listed city details.
-function cityDetails(e) {
+//To show the weather details of any listed city.
+function weatherDetailsByCities(e) {
   document.getElementById("weather").style.display = "block";
   document.getElementById("forecast").style.display = "block";
 
   var citySelected = e.target.textContent;
 
-  var data = localStorage.getItem(citySelected);
+  var data = JSON.parse(localStorage.getItem(citySelected)) || [];
 
-  display(JSON.parse(data));
+  display(data);
 }
 
-searchEl.addEventListener("click", onClickSearch);
-recentLocationsEl.addEventListener("click", cityDetails);
+searchEl.addEventListener("click", weatherSearchByCityName);
+recentLocationsEl.addEventListener("click", weatherDetailsByCities);
